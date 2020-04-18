@@ -6,18 +6,9 @@
     <script type="text/javascript" src="script.js"></script>
     <script type="text/javascript">
     function init() {
+      initCard();
       var body = document.getElementsByTagName("body")[0];
-      body.onkeydown = function(event) {
-
-        var action = mapKey(event.keyCode);
-        if (action != undefined) {
-          const direction = actionToDirection(action);
-          if (!direction) {
-            return;
-          }
-          focusNextCard(direction);
-        }
-      };
+      body.onkeydown = keyboardHandler;
     };
     </script>
   </head>
@@ -25,36 +16,6 @@
   <body onload="init();">
     <h1>Moving motivator</h1>
     <div id="card-holder" class="card-holder">
-      <div id="card-curiosity" class="card" draggable="true" ondragstart="" tabindex="0">
-        호기심
-      </div>
-      <div id="card-honor" class="card" draggable="true" ondragstart="" tabindex="0">
-        명예
-      </div>
-      <div id="card-acceptance" class="card" draggable="true" ondragstart="" tabindex="0">
-        수용
-      </div>
-      <div id="card-mastery" class="card" draggable="true" ondragstart="" tabindex="0">
-        전문성
-      </div>
-      <div id="card-power" class="card" draggable="true" ondragstart="" tabindex="0">
-        파워
-      </div>
-      <div id="card-freedom" class="card" draggable="true" ondragstart="" tabindex="0">
-        자유
-      </div>
-      <div id="card-relatedness" class="card" draggable="true" ondragstart="" tabindex="0">
-        연결됨
-      </div>
-      <div id="card-order" class="card" draggable="true" ondragstart="" tabindex="0">
-        질서
-      </div>
-      <div id="card-goal" class="card" draggable="true" ondragstart="" tabindex="0">
-        목표
-      </div>
-      <div id="card-status" class="card" draggable="true" ondragstart="" tabindex="0">
-        지위
-      </div>
     </div>
   </body>
 </html>
