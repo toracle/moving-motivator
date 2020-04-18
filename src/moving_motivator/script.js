@@ -19,6 +19,11 @@ function mapKey(event) {
   return keyboardMapping[event.keyCode];
 }
 
+function getCardHolder() {
+  return document.getElementById("card-holder");
+}
+
+
 function getCards() {
   const cards = document.querySelectorAll(".card");
   return cards;
@@ -33,9 +38,9 @@ function getActiveCard() {
   return activeElement;
 }
 
-function getNextCard(direction = 1) {
+function getNextCard(direction = 1, card) {
   const cards = getCards();
-  const activeCard = getActiveCard();
+  const activeCard = card || getActiveCard();
 
   if (activeCard == null) {
     return cards[0];
@@ -78,14 +83,29 @@ function actionToDirection(action) {
 }
 
 function shiftCard(direction) {
-  console.log("shift to " + direction);
+  const cardHolder = getCardHolder();
   const activeCard = getActiveCard();
   const nextCard = getNextCard(direction);
+
+  if (!nextCard) {
+    return;
+  }
+
+  if (direction > 0) {
+    cardHolder.insertBefore(nextCard, activeCard);
+    return;
+  }
+
+  if (direction < 0) {
+    const prevCard = getNextCard(direction * -1, nextCard);
+    cardHolder.insertBefore(prevCard, nextCard);
+    activeCard.focus();
+    return;
+  }
 }
 
 function keyboardHandler(event) {
   var action = mapKey(event);
-  console.log(action);
 
   if (action === undefined) {
     return;
@@ -154,7 +174,7 @@ function initCard() {
     },
   ];
 
-  const cardHolder = document.getElementById("card-holder");
+  const cardHolder = getCardHolder();
   cardModels.forEach(function(item) {
     // cardHolder.
     const card = document.createElement("div");
