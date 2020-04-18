@@ -5,10 +5,14 @@
   padding: 20px 5px;
   text-align: center;
   border-radius: 10px;
-  border: 1px solid #333333;
+  border: 2px solid #333333;
 }
 
 .card:hover {
   background-color: #cccccc;
-  cursor: pointer;
+  cursor: grab;
+}
+
+*:focus {
+  border: 2px solid red;
 }
