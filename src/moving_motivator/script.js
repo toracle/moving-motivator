@@ -32,7 +32,7 @@ function getCards() {
 function getActiveCard() {
   const activeElement = document.activeElement;
 
-  if (activeElement.className != "card") {
+  if (!activeElement.classList.contains("card")) {
     return null;
   }
   return activeElement;
@@ -41,6 +41,7 @@ function getActiveCard() {
 function getNextCard(direction = 1, card) {
   const cards = getCards();
   const activeCard = card || getActiveCard();
+  console.log(activeCard);
 
   if (activeCard == null) {
     return cards[0];
@@ -104,15 +105,76 @@ function shiftCard(direction) {
   }
 }
 
-function keyboardHandler(event) {
-  var action = mapKey(event);
+function setLevel(card, level) {
+  card.classList.remove("level-veryhigh",
+                        "level-high",
+                        "level-normal",
+                        "level-low",
+                        "level-verylow");
+  card.classList.add("level-" + level);
+}
 
-  if (action === undefined) {
+function getLevel(card) {
+  for (var i = 0; i < card.classList.length; i++) {
+    const className = card.classList[i];
+    if (className.startsWith("level-")) {
+      return className.slice(6);
+    }
+  }
+  return null;
+}
+
+const cardLevel = [
+  "veryhigh",
+  "high",
+  "normal",
+  "low",
+  "verylow"
+];
+
+function getLowerLevel(level) {
+  const index = cardLevel.indexOf(level);
+  if (index + 2 > cardLevel.length) {
+    return cardLevel[index];
+  }
+  return cardLevel[index + 1];
+}
+
+function getHigherLevel(level) {
+  const index = cardLevel.indexOf(level);
+  if (index - 1 < 0) {
+    return cardLevel[index];
+  }
+  return cardLevel[index - 1];
+}
+
+function increaseLevel(card) {
+  const activeCard = card || getActiveCard();
+  if (!activeCard) {
     return;
   }
 
-  const direction = actionToDirection(action);
-  if (!direction) {
+  const level = getLevel(activeCard);
+  const nextLevel = getHigherLevel(level);
+  setLevel(activeCard, nextLevel);
+}
+
+function decreaseLevel(card) {
+  const activeCard = card || getActiveCard();
+  if (!activeCard) {
+    return;
+  }
+
+  const level = getLevel(activeCard);
+  const nextLevel = getLowerLevel(level);
+  setLevel(activeCard, nextLevel);
+}
+
+function keyboardHandler(event) {
+  var action = mapKey(event);
+  console.log(action);
+
+  if (action === undefined) {
     return;
   }
 
@@ -121,12 +183,17 @@ function keyboardHandler(event) {
     "left": focusNextCard,
     "shift-right": shiftCard,
     "shift-left": shiftCard,
+    "up": increaseLevel,
+    "down": decreaseLevel,
   }
 
   const fn = actionToFunction[action];
   if (!fn) {
     return;
   }
+  console.log(fn);
+
+  const direction = actionToDirection(action);
   fn(direction);
 }
 
@@ -178,7 +245,7 @@ function initCard() {
   cardModels.forEach(function(item) {
     // cardHolder.
     const card = document.createElement("div");
-    card.setAttribute("class", "card");
+    card.setAttribute("class", "card level-normal");
     card.setAttribute("draggable", true);
     card.setAttribute("tabindex", 0);
     card.setAttribute("id", 'card-' + item['id']);

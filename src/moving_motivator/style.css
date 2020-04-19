@@ -8,6 +8,26 @@
   border: 2px solid #333333;
 }
 
+.level-veryhigh {
+  background-color: #00ff00;
+}
+
+.level-high {
+  background-color: #007700;
+}
+
+.level-normal {
+  background-color: #eecc00;
+}
+
+.level-low {
+  background-color: #ee7700;
+}
+
+.level-verylow {
+  background-color: #ff0000;
+}
+
 .card:hover {
   background-color: #cccccc;
   cursor: grab;
