@@ -12,3 +12,9 @@ Management 3.0의 activity 중 하나인 Moving Motivator를 온라인 상에서
 <dt>&lt;Up&gt;, &lt;Down&gt;</dt>
 <dd>커서가 놓인 카드의 점수를 높이거나 낮춥니다.</dd>
 </dl>
+
+
+# TODO
+
+* 각 카드에 대한 상세 설명 표시하기
+* Form에 제출하기
