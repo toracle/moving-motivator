@@ -3,7 +3,7 @@ Management 3.0의 activity 중 하나인 Moving Motivator를 온라인 상에서
 # Feature
 
 <dl>
-<dt><Left>, <Right></dt>
+<dt>&lt;Left&gt;, <Right></dt>
 <dd>커서를 좌우로 이동합니다.</dd>
 
 <dt><Ctrl-Left>, <Ctrl-Right></dt>
