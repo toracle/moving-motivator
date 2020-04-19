@@ -3,6 +3,11 @@
   color: gray;
 }
 
+#flash {
+  margin-left: 10px;
+  color: #0088ff;
+}
+
 .card {
   display: inline-block;
   width: 90px;
