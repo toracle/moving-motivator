@@ -5,27 +5,7 @@
   padding: 20px 5px;
   text-align: center;
   border-radius: 10px;
-  border: 2px solid #333333;
-}
-
-.level-veryhigh {
-  background-color: #00ff00;
-}
-
-.level-high {
-  background-color: #007700;
-}
-
-.level-normal {
-  background-color: #eecc00;
-}
-
-.level-low {
-  background-color: #ee7700;
-}
-
-.level-verylow {
-  background-color: #ff0000;
+  border: 3px solid white;
 }
 
 .card:hover {
@@ -34,5 +14,44 @@
 }
 
 *:focus {
-  border: 2px solid red;
+  border: 3px solid #0088ff;
+}
+
+.keycap {
+  padding: 2px 6px;
+  background-color: #eeeeee;
+  border: 1px solid #aaaaaa;
+  border-radius: 3px;
+  font-size: 0.7em;
+  font-family: monospace;
+}
+
+.keymap {
+  margin: 10px;
+  padding: 10px;
+  border-radius: 10px;
+  border: 1px solid #f0f0f0;
+  background-color: #f0f0f0;
+}
+
+.level-veryhigh {
+  background-color: #55aa33;
+  color: white;
+}
+
+.level-high {
+  background-color: #ccffaa;
+}
+
+.level-normal {
+  background-color: #ffdd88;
+}
+
+.level-low {
+  background-color: #ffaaaa;
+}
+
+.level-verylow {
+  background-color: #aa3355;
+  color: white;
 }

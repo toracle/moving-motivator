@@ -172,7 +172,6 @@ function decreaseLevel(card) {
 
 function keyboardHandler(event) {
   var action = mapKey(event);
-  console.log(action);
 
   if (action === undefined) {
     return;
@@ -191,7 +190,6 @@ function keyboardHandler(event) {
   if (!fn) {
     return;
   }
-  console.log(fn);
 
   const direction = actionToDirection(action);
   fn(direction);
