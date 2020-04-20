@@ -3,12 +3,16 @@
   --card-margin: 5px;
   --card-border: 3px;
   --card-padding: 5px;
+  --card-full-width: calc(
+    var(--card-width) +
+    var(--card-border) * 2 +
+    var(--card-padding) * 2
+  );
   --page-width: calc(
-    var(--card-width) * 10 +
-    (var(--card-border) * 2) * 10 +
-    (var(--card-padding) * 2) * 10 +
+    var(--card-full-width) * 10 +
     var(--card-margin) * 9
   );
+  --legend-width: 90px;
 }
 
 .page-wrapper {
@@ -45,7 +49,7 @@
   border-width: 1px;
 }
 
-.keymap {
+.keymap-holder {
   margin: 10px 0;
   padding: 10px;
   border-width: 1px;
@@ -59,7 +63,19 @@
   margin-bottom: 10px;
 }
 
+.btn-holder {
+  text-align: right;
+}
+
 #btn-submit {
   padding: 5px 10px;
   border-width: 1px;
 }
+
+.legend {
+  display: inline-block;
+  width: var(--legend-width);
+  padding: 5px 0;
+  text-align: center;
+}
+
