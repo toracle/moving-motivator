@@ -1,0 +1,65 @@
+:root {
+  --card-width: 80px;
+  --card-margin: 5px;
+  --card-border: 3px;
+  --card-padding: 5px;
+  --page-width: calc(
+    var(--card-width) * 10 +
+    (var(--card-border) * 2) * 10 +
+    (var(--card-padding) * 2) * 10 +
+    var(--card-margin) * 9
+  );
+}
+
+.page-wrapper {
+  width: var(--page-width);
+  margin: 0 auto;
+}
+
+.card {
+  display: inline-block;
+  width: var(--card-width);
+  margin-right: var(--card-margin);
+  padding: 20px var(--card-padding);
+  text-align: center;
+  border: var(--card-border) solid white;
+}
+
+.card-holder .card:last-of-type {
+  margin-right: 0;
+}
+
+#card-description {
+  padding: 10px;
+  margin: 10px 0;
+  border-width: 1px;
+}
+
+*:focus {
+  border-width: 3px;
+}
+
+.keycap {
+  padding: 2px 6px;
+  font-size: 0.7em;
+  border-width: 1px;
+}
+
+.keymap {
+  margin: 10px 0;
+  padding: 10px;
+  border-width: 1px;
+}
+
+.keymap dt {
+  margin-bottom: 10px;
+}
+
+.keymap dd {
+  margin-bottom: 10px;
+}
+
+#btn-submit {
+  padding: 5px 10px;
+  border-width: 1px;
+}

@@ -1,0 +1,56 @@
+.note {
+  color: gray;
+}
+
+#flash {
+  color: #0088ff;
+}
+
+.card:hover {
+  background-color: #cccccc;
+}
+
+#card-description {
+  border-color: #ff99cc;
+  background-color: #ffccee;
+}
+
+*:focus {
+  border-color: #0088ff;
+}
+
+.keycap {
+  background-color: white;
+  border-color: #aaaaaa;
+}
+
+.keymap {
+  border-color: #f0f0f0;
+  background-color: #f0f0f0;
+}
+
+.level-veryhigh {
+  background-color: #55aa33;
+  color: white;
+}
+
+.level-high {
+  background-color: #ccffaa;
+}
+
+.level-normal {
+  background-color: #ffdd88;
+}
+
+.level-low {
+  background-color: #ffaaaa;
+}
+
+.level-verylow {
+  background-color: #aa3355;
+  color: white;
+}
+
+#btn-submit {
+  border-color: gray;
+}

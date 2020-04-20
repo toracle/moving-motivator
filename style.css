@@ -1,77 +1,40 @@
 .note {
   font-size: 0.8em;
-  color: gray;
-}
-
-#flash {
-  margin-left: 10px;
-  color: #0088ff;
 }
 
 .card {
-  display: inline-block;
-  width: 90px;
-  margin: 5px;
-  padding: 20px 5px;
-  text-align: center;
   border-radius: 10px;
-  border: 3px solid white;
 }
 
 .card:hover {
-  background-color: #cccccc;
   cursor: grab;
 }
 
 #card-description {
-  padding: 10px;
-  margin: 10px;
-  border-radius: 10px;
-  border: 1px solid #ff99cc;
-  background-color: #ffccee;
+  border-style: solid;
 }
 
 *:focus {
-  border: 3px solid #0088ff;
+  border-style: solid;
 }
 
 .keycap {
-  padding: 2px 6px;
-  /* background-color: #eeeeee; */
   background-color: white;
-  border: 1px solid #aaaaaa;
+  border-style: solid;
   border-radius: 3px;
-  font-size: 0.7em;
   font-family: monospace;
   box-shadow: 0.3px 0.3px 0.3px 0.3px gray;
 }
 
 .keymap {
-  margin: 10px;
-  padding: 10px;
   border-radius: 10px;
-  border: 1px solid #f0f0f0;
-  background-color: #f0f0f0;
+  border-style: solid;
 }
 
 .level-veryhigh {
-  background-color: #55aa33;
   color: white;
 }
 
-.level-high {
-  background-color: #ccffaa;
-}
-
-.level-normal {
-  background-color: #ffdd88;
-}
-
-.level-low {
-  background-color: #ffaaaa;
-}
-
-.level-verylow {
-  background-color: #aa3355;
-  color: white;
+#btn-submit {
+  border-color: gray;
 }
