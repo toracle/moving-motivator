@@ -12,6 +12,7 @@
     <script type="text/javascript">
     function init() {
       initCard();
+      initForm();
       var body = document.getElementsByTagName("body")[0];
       body.onkeydown = keyboardHandler;
     };
@@ -33,7 +34,8 @@
         <span class="legend level-veryhigh">매우 충족함</span><span class="legend level-high">충족함</span><span class="legend level-normal">보통</span><span class="legend level-low">결핍됨</span><span class="legend level-verylow">매우 결핍됨</span>
       </div>
       <div class="btn-holder">
-        <span id="flash"></span> <button id="btn-submit" onclick="submit()">제출</button>
+        <form id="form-submit">
+        </form>
       </div>
       <div class="keymap-holder">
         <dl class="keymap">

@@ -201,6 +201,7 @@ function keyboardHandler(event) {
 
   const direction = actionToDirection(action);
   fn(direction);
+  updateForm();
 }
 
 function gather() {
@@ -220,9 +221,49 @@ function gather() {
 }
 
 function submit() {
-  const result = gather();
-  console.table(result);
+  updateForm();
   setFlash('결과를 제출했습니다.');
+}
+
+function convertResult(result) {
+  const sorted = result.sort(function(a, b) {
+    if (a['initial-order'] > b['initial-order']) {
+      return 1;
+    }
+    if (a['initial-order'] < b['initial-order']) {
+      return -1;
+    }
+    return 0;
+  });
+
+  return sorted;
+}
+
+function convertLevelToName(level) {
+  const map = {
+    'verylow': '매우+결핍됨',
+    'low': '결핍됨',
+    'normal': '보통',
+    'high': '충족됨',
+    'veryhigh': '매우+충족됨',
+  }
+  return map[level];
+}
+
+function updateForm() {
+  const result = gather();
+  const converted = convertResult(result);
+  console.table(converted);
+
+  converted.forEach(function(item) {
+    const card = document.getElementById('card-' + item['id']);
+
+    const rankingFormElement = document.getElementById('form-ranking-' + item['id']);
+    const levelFormElement = document.getElementById('form-level-' + item['id']);
+
+    rankingFormElement.setAttribute('value', card.getAttribute('final-order') + '위');
+    levelFormElement.setAttribute('value', convertLevelToName(card.getAttribute('level')));
+  });
 }
 
 function setFlash(text, timeout = 3000) {
@@ -253,5 +294,59 @@ function initCard() {
     card.textContent = item['name'];
 
     cardHolder.appendChild(card);
+  });
+}
+
+function initForm() {
+  const formUrl = 'https://docs.google.com/forms/u/1/d/e/1FAIpQLScOwGeZO7yjQZHfsU2L9x759qwk_hOncNy_N2VU0m5vEmtiNQ/formResponse';
+  const formElement = document.getElementById('form-submit');
+  formElement.setAttribute('action', formUrl);
+  formElement.setAttribute('method', 'POST');
+
+  const flash = document.createElement('span');
+  flash.setAttribute('id', 'flash');
+  formElement.appendChild(flash);
+
+  const nameLabel = document.createElement('label');
+  nameLabel.textContent = '성명: ';
+  nameLabel.setAttribute('for', 'form-name');
+  formElement.appendChild(nameLabel);
+
+  const nameInput = document.createElement('input');
+  nameInput.setAttribute('id', 'form-name');
+  nameInput.setAttribute('type', 'text');
+  nameInput.setAttribute('name', 'entry.76258622');
+  nameInput.setAttribute('required', '');
+  formElement.appendChild(nameInput);
+
+  formElement.innerHTML += '&nbsp;';
+
+  const button = document.createElement('button');
+  button.setAttribute('id', 'btn-submit');
+  button.setAttribute('onclick', 'submit();');
+  button.textContent = '제출';
+  formElement.appendChild(button);
+
+  const fvv = document.createElement('input');
+  fvv.setAttribute('type', 'hidden');
+  fvv.setAttribute('name', 'fvv');
+  fvv.setAttribute('value', '1');
+  formElement.appendChild(fvv);
+
+  cardModels.forEach(function(item) {
+    const rankingFormId = item['ranking-form-id'];
+    const levelFormId = item['level-form-id'];
+
+    const rankingFormElement = document.createElement('input');
+    rankingFormElement.setAttribute('id', 'form-ranking-' + item['id']);
+    rankingFormElement.setAttribute('type', 'hidden');
+    rankingFormElement.setAttribute('name', 'entry.' + item['ranking-form-id']);
+    formElement.appendChild(rankingFormElement);
+
+    const levelFormElement = document.createElement('input');
+    levelFormElement.setAttribute('id', 'form-level-' + item['id']);
+    levelFormElement.setAttribute('type', 'hidden');
+    levelFormElement.setAttribute('name', 'entry.' + item['level-form-id']);
+    formElement.appendChild(levelFormElement);
   });
 }
