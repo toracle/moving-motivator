@@ -298,7 +298,6 @@ function initCard() {
 }
 
 function initForm() {
-  const formUrl = 'https://docs.google.com/forms/u/1/d/e/1FAIpQLScOwGeZO7yjQZHfsU2L9x759qwk_hOncNy_N2VU0m5vEmtiNQ/formResponse';
   const formElement = document.getElementById('form-submit');
   formElement.setAttribute('action', formUrl);
   formElement.setAttribute('method', 'POST');
