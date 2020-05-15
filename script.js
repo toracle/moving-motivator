@@ -241,11 +241,11 @@ function convertResult(result) {
 
 function convertLevelToName(level) {
   const map = {
-    'verylow': '매우+결핍됨',
+    'verylow': '매우 결핍됨',
     'low': '결핍됨',
     'normal': '보통',
     'high': '충족됨',
-    'veryhigh': '매우+충족됨',
+    'veryhigh': '매우 충족됨',
   }
   return map[level];
 }
